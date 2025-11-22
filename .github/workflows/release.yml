@@ -22,12 +22,12 @@ jobs:
       - name: check files
         run: ls -lah monomer.so
       - name: Build Windows
-        run: CGO_ENABLED=1 GOOS=windows CC=x86_64-w64-mingw32-gcc go build -tags=plugin -o monomaker.dll
+        run: CGO_ENABLED=1 GOOS=windows CC=x86_64-w64-mingw32-gcc go build -tags=plugin -o monomer.dll
       - uses: softprops/action-gh-release@v1
         with:
           files: |
-            monomaker.so
-            monomaker.dll
+            monomer.so
+            monomer.dll
 
   build-macos:
     name: Build macOS
@@ -48,5 +48,5 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           files: |
-            monomaker_macos_amd64.vst
-            monomaker_macos_arm64.vst
+            monomer_amd64.vst
+            monomer_arm64.vst
