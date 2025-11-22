@@ -18,16 +18,14 @@ jobs:
         with:
           go-version: 1.17.0
       - name: Build Linux
-        run: CGO_ENABLED=1 go build -tags=plugin -o monomer.so
-      - name: check files
-        run: ls -lah monomer.so
+        run: CGO_ENABLED=1 go build -tags=plugin -o monomer_linux_amd64.so
       - name: Build Windows
-        run: CGO_ENABLED=1 GOOS=windows CC=x86_64-w64-mingw32-gcc go build -tags=plugin -o monomer.dll
+        run: CGO_ENABLED=1 GOOS=windows CC=x86_64-w64-mingw32-gcc go build -tags=plugin -o monomer_windows_amd64.dll
       - uses: softprops/action-gh-release@v1
         with:
           files: |
-            monomer.so
-            monomer.dll
+            monomer_linux_amd64.so
+            monomer_windows_amd64.dll
 
   build-macos:
     name: Build macOS
@@ -41,12 +39,12 @@ jobs:
           go-version: 1.17.0
       - name: Build macOS
         run: |
-          CGO_ENABLED=1 go build -tags=plugin -o monomer_amd64.vst
-          CGO_ENABLED=1 GOARCH=arm64 go build -tags=plugin -o monomer_arm64.vst
+          CGO_ENABLED=1 go build -tags=plugin -o monomer_macos_amd64.vst
+          CGO_ENABLED=1 GOARCH=arm64 go build -tags=plugin -o monomer_macos_arm64.vst
         env:
           GOOS: darwin
       - uses: softprops/action-gh-release@v1
         with:
           files: |
-            monomer_amd64.vst
-            monomer_arm64.vst
+            monomer_macos_amd64.vst
+            monomer_macos_arm64.vst
