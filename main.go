@@ -26,7 +26,7 @@ func percentMono(v float32) float32 {
 
 func init() {
 	var (
-		uniqueID = [4]byte{'g', 'r', 'i', 't'}
+		uniqueID = [4]byte{'m', 'o', 'n', 'o'}
 		version  = int32(1000)
 	)
 	vst2.PluginAllocator = func(h vst2.Host) (vst2.Plugin, vst2.Dispatcher) {
@@ -103,8 +103,8 @@ func init() {
 			Version:        version,
 			InputChannels:  channels,
 			OutputChannels: channels,
-			Name:           "Monomaker",
-			Vendor:         "GritBin",
+			Name:           "Monomer",
+			Vendor:         "kendfss",
 			Category:       vst2.PluginCategoryEffect,
 			Parameters: []*vst2.Parameter{
 				&gain,
