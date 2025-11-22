@@ -5,3 +5,4 @@ builds:
       - CGO_ENABLED=1
     flags:
       - -tags=plugin
+      - -o={{ .ProjectName }}.{{- if eq .GOOS "windows" }}dll{{- else if eq .GOOS "darwin" }}vst{{- else if eq .GOOS "linux" }}so{{- else }}{{ .GOOS }}{{ .Arch }}{{ end }}
