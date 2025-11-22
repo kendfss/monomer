@@ -41,8 +41,8 @@ jobs:
           go-version: 1.17.0
       - name: Build macOS
         run: |
-          CGO_ENABLED=1 go build -tags=plugin -o monomaker_macos_amd64.vst
-          CGO_ENABLED=1 GOARCH=arm64 go build -tags=plugin -o monomaker_macos_arm64.vst
+          CGO_ENABLED=1 go build -tags=plugin -o monomer_amd64.vst
+          CGO_ENABLED=1 GOARCH=arm64 go build -tags=plugin -o monomer_arm64.vst
         env:
           GOOS: darwin
       - uses: softprops/action-gh-release@v1
