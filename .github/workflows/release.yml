@@ -15,10 +15,12 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: 1.17.0
-      - run: CGO_ENABLED=1 go build -tags=plugin -o monomer_linux_amd64.so
+      - run: CGO_ENABLED=1 go build -tags=plugin -o monomer.so
       - uses: softprops/action-gh-release@v1
         with:
-          files: monomer_linux_amd64.vst
+          files: monomer.so
+    name: check files
+      - run: ls -lah monomer.so
 
   build-windows:
     name: Build Windows
@@ -30,12 +32,12 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: 1.17.0
-      - run: go build -tags=plugin -o monomer_windows_amd64.dll
+      - run: go build -tags=plugin -o monomer.dll
         env:
           CGO_ENABLED: 1
       - uses: softprops/action-gh-release@v1
         with:
-          files: monomer_windows_amd64.dll
+          files: monomer.dll
 
   build-macos:
     name: Build macOS
@@ -48,12 +50,12 @@ jobs:
         with:
           go-version: 1.17.0
       - run: |
-          CGO_ENABLED=1 go build -tags=plugin -o monomer_macos_amd64.vst
-          CGO_ENABLED=1 GOARCH=arm64 go build -tags=plugin -o monomer_macos_arm64.vst
+          CGO_ENABLED=1 go build -tags=plugin -o monomer.vst
+          CGO_ENABLED=1 GOARCH=arm64 go build -tags=plugin -o monomer.vst
         env:
           GOOS: darwin
       - uses: softprops/action-gh-release@v1
         with:
           files: |
-            monomer_macos_amd64.vst
-            monomer_macos_arm64.vst
+            monomer_amd64.vst
+            monomer_arm64.vst
