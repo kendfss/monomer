@@ -7,11 +7,9 @@ builds:
     flags:
       - -tags=plugin
     goos:
-      - linux
-      - darwin
-      - windows
+      - "{{ .Env.GOOS }}"
     goarch:
-      - amd64
+      - "{{ .Env.GOARCH }}"
 
 archives:
   - formats:
