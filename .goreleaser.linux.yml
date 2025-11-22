@@ -5,6 +5,7 @@ builds:
       - CGO_ENABLED=1
     flags:
       - -tags=plugin
+      - -o=monomer.so
     goos:
       - linux
     goarch:
