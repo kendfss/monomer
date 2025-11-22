@@ -1,0 +1,16 @@
+version: 2
+project_name: monomaker
+builds:
+  - env:
+      - CGO_ENABLED=1
+    flags:
+      - -tags=plugin
+    goos:
+      - linux
+      - windows
+    goarch:
+      - amd64
+
+archives:
+  - format: binary
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if eq .Os \"windows\" }}.dll{{ else }}.so{{ end }}"

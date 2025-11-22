@@ -1,13 +1,33 @@
+# .goreleaser.yml
 version: 2
-project_name: monomer
+project_name: monomaker
 builds:
-  - env:
+  - id: linux-amd64
+    env:
+      - CGO_ENABLED=1
+    flags:
+      - -tags=plugin
+    goos:
+      - linux
+    goarch:
+      - amd64
+
+  - id: windows-amd64
+    env:
       - CGO_ENABLED=1
     flags:
       - -tags=plugin
     goos:
       - windows
-      - linux
+    goarch:
+      - amd64
+
+  - id: darwin-native
+    env:
+      - CGO_ENABLED=1
+    flags:
+      - -tags=plugin
+    goos:
       - darwin
     goarch:
       - amd64
