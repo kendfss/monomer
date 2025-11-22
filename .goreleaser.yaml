@@ -1,5 +1,6 @@
 version: 2
 
+project_name: monomaker
 builds:
   - env:
       - CGO_ENABLED=1
@@ -11,8 +12,6 @@ builds:
       - windows
     goarch:
       - amd64
-      - arm64
-      - arm
 
 archives:
   - formats:
