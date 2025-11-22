@@ -1,3 +1,4 @@
+# .github/workflows/release.yml
 on:
   pull_request:
   push:
@@ -35,3 +36,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CGO_ENABLED: 1
+          GOOS: ${{ matrix.goos }}
