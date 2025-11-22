@@ -1,0 +1,10 @@
+project_name: monomaker
+builds:
+  - env:
+      - CGO_ENABLED=1
+    flags:
+      - -tags=plugin
+    goos:
+      - linux
+    goarch:
+      - amd64
