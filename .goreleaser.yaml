@@ -7,9 +7,9 @@ builds:
     flags:
       - -tags=plugin
     goos:
-      - "{{ .Env.GOOS }}"
+      - $GOOS
     goarch:
-      - "{{ .Env.GOARCH }}"
+      - $GOARCH
 
 archives:
   - formats:
