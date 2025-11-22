@@ -20,7 +20,7 @@ jobs:
       - name: Build Linux
         run: CGO_ENABLED=1 go build -tags=plugin --buildmode=c-shared -o monomer_linux_amd64.so
       - name: Build Windows
-        run: CGO_ENABLED=1 GOOS=windows CC=x86_64-w64-mingw32-gcc go build -tags=plugin --buildmode=c-shared -ldflags="-extldflags "-static"" -o monomer_windows_amd64.dll
+        run: CGO_ENABLED=1 GOOS=windows CC=x86_64-w64-mingw32-gcc go build -tags=plugin --buildmode=c-shared -ldflags='-extldflags "-static"' -o monomer_windows_amd64.dll
       - uses: softprops/action-gh-release@v1
         with:
           files: |
