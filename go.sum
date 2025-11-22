@@ -1,6 +1,10 @@
 pipelined.dev/audio/vst2 v0.10.0 h1:exmszZmQ2KZeqfXnxqrQ2UsLexaz9B5WZHE2Kbbd/mg=
 pipelined.dev/audio/vst2 v0.10.0/go.mod h1:wETLxsbBPftj6t4iVBCXvH/Xgd27ZgIC4hNnHDYNuz8=
+pipelined.dev/audio/vst2 v0.11.0 h1:f1ePUZIfrz2JsX2SKyLU2I4ct2XOnOl83VxHE9y9Wd0=
+pipelined.dev/audio/vst2 v0.11.0/go.mod h1:wETLxsbBPftj6t4iVBCXvH/Xgd27ZgIC4hNnHDYNuz8=
 pipelined.dev/pipe v0.10.0 h1:qDYvTB5PjqV7xn5YTL7JYqA+I1bDNC0sxUGMVeoB8Pg=
 pipelined.dev/pipe v0.10.0/go.mod h1:aIt+NPlW0QLYByqYniG77lTxSvl7OtCNLws/m+Xz5ww=
+pipelined.dev/pipe v0.11.0 h1:yRrbntKdqw/nbFqkz9dPaSHBoM7pK1LRHHDqdBJuqtc=
+pipelined.dev/pipe v0.11.0/go.mod h1:aIt+NPlW0QLYByqYniG77lTxSvl7OtCNLws/m+Xz5ww=
 pipelined.dev/signal v0.10.0 h1:7O1bdYHG6MeXYthNKsXB++jx2UkUPiicwE/MMwdgYRc=
 pipelined.dev/signal v0.10.0/go.mod h1:wi0YlA20+rinS9o+7IMZHH3/YsO3jkahHNLSCCfaEA0=
