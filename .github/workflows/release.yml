@@ -5,39 +5,29 @@ on:
 permissions:
   contents: write
 jobs:
-  build-linux:
-    name: Build Linux
+  build-linux-windows:
+    name: Build Linux & Windows
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Install mingw-w64
+        run: sudo apt-get update && sudo apt-get install -y mingw-w64
       - uses: actions/setup-go@v5
         with:
           go-version: 1.17.0
-      - run: CGO_ENABLED=1 go build -tags=plugin -o monomer.so
+      - name: Build Linux
+        run: CGO_ENABLED=1 go build -tags=plugin -o monomer.so
+      - name: check files
+        run: ls -lah monomer.so
+      - name: Build Windows
+        run: CGO_ENABLED=1 GOOS=windows CC=x86_64-w64-mingw32-gcc go build -tags=plugin -o monomaker.dll
       - uses: softprops/action-gh-release@v1
         with:
-          files: monomer.so
-    name: check files
-      - run: ls -lah monomer.so
-
-  build-windows:
-    name: Build Windows
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-go@v5
-        with:
-          go-version: 1.17.0
-      - run: go build -tags=plugin -o monomer.dll
-        env:
-          CGO_ENABLED: 1
-      - uses: softprops/action-gh-release@v1
-        with:
-          files: monomer.dll
+          files: |
+            monomaker.so
+            monomaker.dll
 
   build-macos:
     name: Build macOS
@@ -49,13 +39,14 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: 1.17.0
-      - run: |
-          CGO_ENABLED=1 go build -tags=plugin -o monomer.vst
-          CGO_ENABLED=1 GOARCH=arm64 go build -tags=plugin -o monomer.vst
+      - name: Build macOS
+        run: |
+          CGO_ENABLED=1 go build -tags=plugin -o monomaker_macos_amd64.vst
+          CGO_ENABLED=1 GOARCH=arm64 go build -tags=plugin -o monomaker_macos_arm64.vst
         env:
           GOOS: darwin
       - uses: softprops/action-gh-release@v1
         with:
           files: |
-            monomer_amd64.vst
-            monomer_arm64.vst
+            monomaker_macos_amd64.vst
+            monomaker_macos_arm64.vst
